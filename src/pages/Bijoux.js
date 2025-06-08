@@ -19,6 +19,20 @@ function Bijoux() {
         <h1>Nos bijoux</h1>
         <p>Découvrez nos bagues, bracelets, colliers...</p>
       </div>
+      <label>Rechercher</label>
+      <input
+        type="text"
+        placeholder="Rechercher un produit..."
+        onChange={(e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          getProduitsByCategory(category).then((data) => {
+            const filteredProducts = data.filter((p) =>
+              p.title.toLowerCase().includes(searchTerm)
+            );
+            setProduits(filteredProducts);
+          });
+        }}
+      />
       <div className="container-col">
         <div className="container-row">
           {produits.map((p) => (

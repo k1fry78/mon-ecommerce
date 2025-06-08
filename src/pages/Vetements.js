@@ -7,7 +7,12 @@ import { CartContext } from "../CartContext";
 function Produits() {
   const [produits, setProduits] = useState([]);
   const [scene, setScene] = useState("initial");
-  const category = scene === "homme" ? "homme" : "femme";
+  const category =
+    scene === "homme"
+      ? "men's clothing"
+      : scene === "femme"
+      ? "women's clothing"
+      : null;
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
@@ -33,7 +38,7 @@ function Produits() {
     return (
       <div>
         <div className="container-title-produits">
-          <h1>Nos produits</h1>
+          <h1>Nos vêtements</h1>
           <p>Découvrez les vêtements pour {category} !</p>
           <div className="boutons-vetements">
             <button
@@ -49,6 +54,20 @@ function Produits() {
               Vêtements pour homme
             </button>
           </div>
+          <label>Rechercher</label>
+          <input
+            type="text"
+            placeholder="Rechercher un produit..."
+            onChange={(e) => {
+              const searchTerm = e.target.value.toLowerCase();
+              getProduitsByCategory(category).then((data) => {
+                const filteredProducts = data.filter((p) =>
+                  p.title.toLowerCase().includes(searchTerm)
+                );
+                setProduits(filteredProducts);
+              });
+            }}
+          />
         </div>
         <div className="container-col">
           <div className="container-row">
@@ -74,7 +93,7 @@ function Produits() {
     return (
       <div>
         <div className="container-title-produits">
-          <h1>Nos produits</h1>
+          <h1>Nos vêtements</h1>
           <p>Découvrez les vêtements pour {category} !</p>
           <div className="boutons-vetements">
             <button
@@ -90,6 +109,20 @@ function Produits() {
               Vêtements pour femme
             </button>
           </div>
+          <label>Rechercher</label>
+          <input
+            type="text"
+            placeholder="Rechercher un produit..."
+            onChange={(e) => {
+              const searchTerm = e.target.value.toLowerCase();
+              getProduitsByCategory(category).then((data) => {
+                const filteredProducts = data.filter((p) =>
+                  p.title.toLowerCase().includes(searchTerm)
+                );
+                setProduits(filteredProducts);
+              });
+            }}
+          />
         </div>
         <div className="container-col">
           <div className="container-row">
