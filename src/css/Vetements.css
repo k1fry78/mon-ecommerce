@@ -1,0 +1,64 @@
+.container-title-produits {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: 56px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.container-title-produits h1 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.container-title-produits h1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -12px;
+  width: 50px;
+  height: 4px;
+  background-color: #e91111;
+  border-radius: 2px;
+}
+
+.boutons-vetements {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.bouton-vetement {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e91111 60%, #ff6a00 100%);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(233, 17, 17, 0.1);
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 1px;
+}
+
+.bouton-vetement.femme {
+  background: linear-gradient(90deg, #c471f5 60%, #fa71cd 100%);
+}
+
+.bouton-vetement.homme {
+  background: linear-gradient(90deg, #36d1c4 60%, #1e90ff 100%);
+}
+
+.bouton-vetement:hover {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
